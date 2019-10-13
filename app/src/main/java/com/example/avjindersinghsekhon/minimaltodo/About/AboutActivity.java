@@ -44,7 +44,7 @@ public class AboutActivity extends AppDefaultActivity {
         super.onCreate(savedInstanceState);
 //        mId = (UUID)i.getSerializableExtra(TodoNotificationService.TODOUUID);
 
-        final Drawable backArrow = getResources().getDrawable(R.drawable.ic_add_white_24dp);
+        final Drawable backArrow = getResources().getDrawable(R.drawable.ic_arrow_back);
         if (backArrow != null) {
             backArrow.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
         }
