@@ -29,5 +29,6 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://maven.sumup.com/releases' }
     }
 }
