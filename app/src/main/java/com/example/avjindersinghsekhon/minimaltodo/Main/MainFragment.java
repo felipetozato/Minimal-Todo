@@ -34,6 +34,7 @@ import com.example.avjindersinghsekhon.minimaltodo.AddToDo.AddToDoActivity;
 import com.example.avjindersinghsekhon.minimaltodo.AddToDo.AddToDoFragment;
 import com.example.avjindersinghsekhon.minimaltodo.Analytics.AnalyticsApplication;
 import com.example.avjindersinghsekhon.minimaltodo.AppDefault.AppDefaultFragment;
+import com.example.avjindersinghsekhon.minimaltodo.BuildConfig;
 import com.example.avjindersinghsekhon.minimaltodo.R;
 import com.example.avjindersinghsekhon.minimaltodo.Reminder.ReminderFragment;
 import com.example.avjindersinghsekhon.minimaltodo.Settings.SettingsActivity;
@@ -42,6 +43,8 @@ import com.example.avjindersinghsekhon.minimaltodo.Utility.RecyclerViewEmptySupp
 import com.example.avjindersinghsekhon.minimaltodo.Utility.StoreRetrieveData;
 import com.example.avjindersinghsekhon.minimaltodo.Utility.ToDoItem;
 import com.example.avjindersinghsekhon.minimaltodo.Utility.TodoNotificationService;
+import com.sumup.merchant.api.SumUpAPI;
+import com.sumup.merchant.api.SumUpLogin;
 
 import org.json.JSONException;
 
@@ -351,7 +354,6 @@ public class MainFragment extends AppDefaultFragment {
                 Intent intent = new Intent(getContext(), SettingsActivity.class);
                 startActivity(intent);
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

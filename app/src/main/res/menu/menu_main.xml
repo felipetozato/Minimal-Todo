@@ -3,9 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".AddToDo.AddToDoActivity">
 
-
-
-
     <item
         android:id="@+id/preferences"
         android:title="@string/action_settings"
@@ -16,5 +13,10 @@
         android:id="@+id/aboutMeMenuItem"
         app:showAsAction="never"
         />
+
+    <item android:title="@string/support"
+        android:id="@+id/supportMenuItem"
+        android:icon="@drawable/ic_monetization_on"
+        app:showAsAction="always"/>
 
 </menu>

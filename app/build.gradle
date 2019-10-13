@@ -18,6 +18,7 @@ android {
         targetSdkVersion 28
         versionCode 3
         versionName "1.2"
+        buildConfigField "String", "AFFILIATE_ID", "\"4ee861f9-34bd-4c12-826c-9c2906a89628\""
     }
     buildTypes {
         release {
