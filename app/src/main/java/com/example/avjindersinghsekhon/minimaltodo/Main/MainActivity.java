@@ -1,7 +1,7 @@
 package com.example.avjindersinghsekhon.minimaltodo.Main;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +19,7 @@ import com.example.avjindersinghsekhon.minimaltodo.Settings.SettingsActivity;
 import com.sumup.merchant.api.SumUpAPI;
 import com.sumup.merchant.api.SumUpLogin;
 import com.sumup.merchant.api.SumUpPayment;
+import com.sumup.merchant.api.SumUpState;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -35,6 +36,11 @@ public class MainActivity extends AppDefaultActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     @Override
@@ -82,7 +88,7 @@ public class MainActivity extends AppDefaultActivity {
                 startActivity(intent);
                 return true;
             case R.id.supportMenuItem:
-                openPaymentMethod();
+                loginAuth();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -102,6 +108,12 @@ public class MainActivity extends AppDefaultActivity {
                     super.onActivityResult(requestCode, resultCode, data);
             }
         }
+    }
+
+    private void loginAuth() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://api.sumup.com/authorize?response_type=code&client_id=kkP2aqEnexRnDfvXVq9Rvf-08xsm&redirect_uri=minimaltodo://login/callback&scope=payments%20transactions.history"));
+        this.startActivity(intent);
     }
 
     private void openPaymentMethod() {
