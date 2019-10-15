@@ -1,8 +1,11 @@
 package com.example.avjindersinghsekhon.minimaltodo.data.model
 
+import com.example.avjindersinghsekhon.minimaltodo.data.utils.SERVER_DATE_FORMAT
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.sumup.merchant.Models.VatRate
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TransactionData {
 
@@ -64,4 +67,5 @@ class TransactionData {
     @Expose
     var receiptNo: String? = null
 
+    fun timestampAsDate() = timestamp?.let { SimpleDateFormat(SERVER_DATE_FORMAT).parse(timestamp) }
 }

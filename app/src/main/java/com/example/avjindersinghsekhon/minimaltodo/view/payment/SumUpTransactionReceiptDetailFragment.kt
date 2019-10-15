@@ -7,10 +7,24 @@ import com.example.avjindersinghsekhon.minimaltodo.data.model.Receipt
 import com.example.avjindersinghsekhon.minimaltodo.view.AppDefault.AppDefaultFragment
 
 import com.example.avjindersinghsekhon.minimaltodo.R
+import com.example.avjindersinghsekhon.minimaltodo.view.Utility.CurrencyUtils
 import kotlinx.android.synthetic.main.content_sum_up_receipt_detail.*
 import java.text.SimpleDateFormat
 
-class SumUpTransactionReceiptDetail : AppDefaultFragment() {
+class SumUpTransactionReceiptDetailFragment : AppDefaultFragment() {
+
+    companion object {
+        private const val DATE_FORMAT_PATTERN = "dd/MM/yyyy - HH:mm"
+        private const val TRANSACTION_ID_KEY = "ID_KEY"
+
+        @JvmStatic
+        fun newInstance(transactionId: String = "TETSFYN73C") =
+                SumUpTransactionReceiptDetailFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(TRANSACTION_ID_KEY, transactionId)
+                    }
+                }
+    }
 
     override fun layoutRes(): Int {
         return R.layout.fragment_sum_up_receipt_detail
@@ -20,9 +34,15 @@ class SumUpTransactionReceiptDetail : AppDefaultFragment() {
     private val viewModel = TrasactionHistoryViewModel()
     private lateinit var transactionId: String
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            transactionId = it.getString(TRANSACTION_ID_KEY) ?: ""
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        transactionId = "TETSFYN73C"
         viewModel.getReceipt(transactionId).observe(this, observeReceipt())
         (this.requireActivity() as SumUpTransactionHistoryActivity).setTitle(transactionId)
     }
@@ -39,7 +59,8 @@ class SumUpTransactionReceiptDetail : AppDefaultFragment() {
                 addressText.text = fullAddress
             }
             receipt.transactionData?.let {
-                val amount = "${it.currency} ${it.amount?.toString()}"
+                val amount = CurrencyUtils.currencyCodeToDisplayableText(it.currency ?: "") +
+                " ${it.amount?.toString()}"
                 totalAmountText.text = amount
             }
             receipt.transactionData?.card?.let {
@@ -52,19 +73,12 @@ class SumUpTransactionReceiptDetail : AppDefaultFragment() {
                 transactionStatusText.text = it
                 cardTranscationStatus.requestLayout()
             }
-            receipt.transactionData?.timestamp?.let {
-                val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-                val datetime = formatter.parse(it)
-                dateText.text = SimpleDateFormat("dd/MM/yyyy - HH:mm").format(datetime)
+            receipt.transactionData?.timestampAsDate()?.let {
+                dateText.text = SimpleDateFormat(DATE_FORMAT_PATTERN).format(it)
             }
             receipt.cardData?.name?.let {
                 operationTypeText.text = it
             }
         }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = SumUpTransactionReceiptDetail()
     }
 }
