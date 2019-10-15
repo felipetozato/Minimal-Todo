@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:theme="@style/CustomStyle.DarkTheme">
         <activity
-            android:name=".Main.MainActivity"
+            android:name=".view.Main.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
@@ -23,29 +23,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddToDo.AddToDoActivity"
-            android:parentActivityName=".Main.MainActivity"
+            android:name=".view.AddToDo.AddToDoActivity"
+            android:parentActivityName=".view.Main.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".About.AboutActivity"
+            android:name=".view.About.AboutActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".Main.MainActivity">
+            android:parentActivityName=".view.Main.MainActivity">
         </activity>
         <activity
-            android:name=".Reminder.ReminderActivity"
+            android:name=".view.Reminder.ReminderActivity"
             android:label="@string/app_name" />
 
-        <service android:name=".Utility.TodoNotificationService" />
-        <service android:name=".Utility.DeleteNotificationService" />
+        <service android:name=".view.Utility.TodoNotificationService" />
+        <service android:name=".view.Utility.DeleteNotificationService" />
 
         <activity
-            android:name=".Settings.SettingsActivity"
-            android:parentActivityName=".Main.MainActivity" />
+            android:name=".view.Settings.SettingsActivity"
+            android:parentActivityName=".view.Main.MainActivity" />
 
         <activity
-            android:name=".payment.SumUpTransactionHistoryActivity"
+            android:name="com.example.avjindersinghsekhon.minimaltodo.view.payment.SumUpTransactionHistoryActivity"
             android:label="Receipt"
-            android:parentActivityName=".Main.MainActivity"
+            android:parentActivityName=".view.Main.MainActivity"
             android:screenOrientation="portrait">
             <!-- This intent-filter below is not used anymore. I was using it to implement
              the OAuth flow before figuring out the id for the transaction was wrong -->

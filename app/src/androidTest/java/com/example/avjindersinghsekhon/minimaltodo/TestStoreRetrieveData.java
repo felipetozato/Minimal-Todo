@@ -26,9 +26,9 @@ package com.example.avjindersinghsekhon.minimaltodo;
 import android.content.Context;
 import android.test.ActivityUnitTestCase;
 
-import com.example.avjindersinghsekhon.minimaltodo.Main.MainActivity;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.StoreRetrieveData;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.ToDoItem;
+import com.example.avjindersinghsekhon.minimaltodo.view.Main.MainActivity;
+import com.example.avjindersinghsekhon.minimaltodo.view.Utility.StoreRetrieveData;
+import com.example.avjindersinghsekhon.minimaltodo.view.Utility.ToDoItem;
 
 import org.json.JSONArray;
 
