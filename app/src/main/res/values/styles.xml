@@ -141,12 +141,12 @@
     <style name="CustomStyle.DarkTheme.HeaderText" parent="TextAppearance.AppCompat">
         <item name="android:textSize">17sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/mdtp_white</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="CustomStyle.DarkTheme.BodyText" parent="TextAppearance.AppCompat">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/mdtp_white</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
 </resources>

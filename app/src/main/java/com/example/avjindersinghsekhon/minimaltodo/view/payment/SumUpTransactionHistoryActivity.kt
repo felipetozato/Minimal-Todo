@@ -11,7 +11,7 @@ class SumUpTransactionHistoryActivity : AppDefaultActivity() {
     }
 
     override fun createInitialFragment(): Fragment {
-        return SumUpTransactionHistoryFragment.newInstance()
+        return SumUpTransactionReceiptDetail.newInstance()
     }
 
     override fun shouldSetupBackButton(): Boolean {
