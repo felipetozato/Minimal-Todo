@@ -373,7 +373,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
 //                else{
 //                    date = new Date();
 //                }
-//                Calendar calendar = Calendar.getInstance();
+//                Calendar calendar = Calendar.getReceiptsInstance();
 //                calendar.setTime(date);
 //                int year = calendar.get(Calendar.YEAR);
 //                int month = calendar.get(Calendar.MONTH);
@@ -399,7 +399,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
 //                else{
 //                    date = new Date();
 //                }
-//                Calendar calendar = Calendar.getInstance();
+//                Calendar calendar = Calendar.getReceiptsInstance();
 //                calendar.setTime(date);
 //                int hour = calendar.get(Calendar.HOUR_OF_DAY);
 //                int minute = calendar.get(Calendar.MINUTE);

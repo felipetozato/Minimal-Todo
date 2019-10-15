@@ -31,4 +31,7 @@
     <string name="snooze">Nickerchen</string>
     <string name="remove">Herausnehmen</string>
     <string name="support">Support</string>
+    <string name="address">Address</string>
+    <string name="credit_card">Credit Card Number</string>
+    <string name="transaction_status">Transaction Status</string>
 </resources>

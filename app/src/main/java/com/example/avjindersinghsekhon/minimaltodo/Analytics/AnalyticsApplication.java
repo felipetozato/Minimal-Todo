@@ -1,6 +1,7 @@
 package com.example.avjindersinghsekhon.minimaltodo.Analytics;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.PackageManager;
 
 import com.example.avjindersinghsekhon.minimaltodo.R;
@@ -15,11 +16,13 @@ public class AnalyticsApplication extends Application {
 
     private Tracker mTracker;
     private static final boolean IS_ENABLED = true;
+    public static Context appContext; //Not great, but would require dagger to avoid this or avoid passing context everywhere
 
     @Override
     public void onCreate() {
         super.onCreate();
         SumUpState.init(this);
+        appContext = this;
     }
 
     synchronized private Tracker getDefaultTracker() {
