@@ -42,7 +42,6 @@ public class AboutActivity extends AppDefaultActivity {
         }
 
         super.onCreate(savedInstanceState);
-//        mId = (UUID)i.getSerializableExtra(TodoNotificationService.TODOUUID);
 
         final Drawable backArrow = getResources().getDrawable(R.drawable.ic_arrow_back);
         if (backArrow != null) {

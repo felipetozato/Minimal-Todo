@@ -27,8 +27,6 @@ import java.util.UUID;
 
 public class MainActivity extends AppDefaultActivity {
 
-    private final static int SUMUP_LOGIN_REQUEST_CODE = 1;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
@@ -80,19 +78,6 @@ public class MainActivity extends AppDefaultActivity {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == SumUpAPI.Response.ResultCode.SUCCESSFUL) {
-            switch (requestCode) {
-                case SUMUP_LOGIN_REQUEST_CODE:
-                    openPaymentMethod();
-                    break;
-                default:
-                    super.onActivityResult(requestCode, resultCode, data);
-            }
-        }
-    }
-
     //OAuth flow. Not used...
 //    private void loginAuth() {
 //        Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -103,39 +88,6 @@ public class MainActivity extends AppDefaultActivity {
     private void openTransactionReceiptScreen() {
         Intent intent = new Intent(this, SumUpTransactionHistoryActivity.class);
         this.startActivity(intent);
-    }
-
-    private void openPaymentMethod() {
-        if (SumUpAPI.isLoggedIn()) {
-            doPayment();
-        } else {
-            SumUpLogin sumupLogin = SumUpLogin.builder(BuildConfig.AFFILIATE_ID).build();
-            SumUpAPI.openLoginActivity(this, sumupLogin, SUMUP_LOGIN_REQUEST_CODE);
-        }
-    }
-
-    private void doPayment() {
-        SumUpPayment payment = SumUpPayment.builder()
-                // mandatory parameters
-                .total(new BigDecimal("20.40")) // minimum 1.00
-                .currency(SumUpPayment.Currency.BRL)
-                // optional: include a tip amount in addition to the total
-                .tip(new BigDecimal("0.0"))
-                // optional: add details
-                .title("Donation for the app")
-                .receiptEmail("felipe.test@gmail.com")
-                .receiptSMS("+3531234567890")
-                // optional: Add metadata
-                .addAdditionalInfo("AccountId", "taxi0334")
-                .addAdditionalInfo("From", "Paris")
-                .addAdditionalInfo("To", "Berlin")
-                // optional: foreign transaction ID, must be unique!
-                .foreignTransactionId(UUID.randomUUID().toString())  // can not exceed 128 chars
-                // optional: skip the success screen
-                .skipSuccessScreen()
-                .build();
-
-        SumUpAPI.checkout(MainActivity.this, payment, 2);
     }
 
 }

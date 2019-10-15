@@ -208,8 +208,18 @@
 
                 </LinearLayout>
 
-
             </LinearLayout>
+
+            <Button
+                android:id="@+id/makePaymentButton"
+                android:textColor="@color/mdtp_white"
+                android:backgroundTint="@color/amber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/make_payment_related_to_item"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 
